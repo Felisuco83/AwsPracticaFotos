@@ -1,0 +1,48 @@
+﻿@model AwsPracticaFotos.Models.Usuario
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+    </dl>
+    <h2>Fotos</h2>
+        @foreach (var foto in Model.Fotos)
+        {
+            var source = "https://bucket-practicafotos.s3.eu-west-3.amazonaws.com/" + foto.Imagen;
+            <img src="@source" width="200" height="100"/>
+        }
+    </div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdUsuario }) |
+    <a asp-action="Index">Back to List</a>
+</div>
